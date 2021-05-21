@@ -1,16 +1,16 @@
 #!/bin/bash
 
-echo -e "Esse script realiza um backup dos arquivos da tua pasta atual:"
+echo -e "This script performs a backup of the files in your current folder:"
 ls -1
 DATA="$(date +%d.%m.%y.%H.%M)"
 PASTA="/tmp/backup/$DATA"
-echo -e "Criando uma pasta temporária ${PASTA}..."
+echo -e "Creating a temporary folder ${PASTA}..."
 mkdir -p ${PASTA} 2> /dev/null
-echo -e "Copiando os arquivos (exceto o .zip).. foi"
+echo -e "Copying the files (except the .zip) .. was"
 cp $(ls | grep -v *.zip) $PASTA
-echo -e "Agora estou compactando os arquivos"
+echo -e "Now I'm compressing the files"
 zip -r ./${DATA}.zip ${PASTA}/*
-echo -e "Excluindo a pasta temporária ${PASTA}....."
+echo -e "deleting a temporary folder ${PASTA}..."
 rm -r ${PASTA} 2> /dev/null
 echo -e "Feito!"
 
